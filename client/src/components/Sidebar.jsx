@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   LayoutDashboard,
   Settings,
@@ -12,14 +13,14 @@ import {
 
 const Sidebar = () => {
   const menuItems = [
-    { title: 'Dashboard', icon: LayoutDashboard },
-    { title: 'Global Settings', icon: Settings },
-    { title: 'User Detail', icon: User },
-    { title: 'Attendance', icon: CalendarClock },
-    { title: 'Leave Details', icon: FileText },
-    { title: 'Salary Slip', icon: CreditCard },
-    { title: 'Leave Application', icon: FileInput },
-    { title: 'Device Attendance', icon: MonitorSmartphone },
+    { title: 'Dashboard', icon: LayoutDashboard, path: '/' },
+    { title: 'Global Settings', icon: Settings, path: '/settings' },
+    { title: 'User Detail', icon: User, path: '/user-detail' },
+    { title: 'Attendance', icon: CalendarClock, path: '/attendance' },
+    { title: 'Leave Details', icon: FileText, path: '/leave-details' },
+    { title: 'Salary Slip', icon: CreditCard, path: '/salary-slip' },
+    { title: 'Leave Application', icon: FileInput, path: '/leave-application' },
+    { title: 'Device Attendance', icon: MonitorSmartphone, path: '/device-attendance' },
   ];
 
   return (
@@ -27,14 +28,14 @@ const Sidebar = () => {
       <div className="p-4 text-xl font-bold text-teal-600">HRM</div>
       <nav className="mt-4">
         {menuItems.map((item) => (
-          <a
+          <Link
             key={item.title}
-            href="#"
+            to={item.path}
             className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100"
           >
             <item.icon className="w-5 h-5 mr-3 text-gray-500" />
             {item.title}
-          </a>
+          </Link>
         ))}
       </nav>
       <div className="absolute bottom-4 left-4">
