@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Dashboard from './components/Dashboard';
 import CompanyInfoForm from './components/CompanyInfoForm';
 import UserDetail from './components/UserDetail';
+import EmployeeList from './components/EmployeeList';
 import Attendance from './components/Attendance';
 import LeaveDetails from './components/LeaveDetails';
 import SalarySlip from './components/SalarySlip';
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/settings" element={<CompanyInfoForm />} />
           <Route path="/user-detail" element={<UserDetail />} />
+          <Route path="/employees" element={<EmployeeList />} />
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/leave-details" element={<LeaveDetails />} />
           <Route path="/salary-slip" element={<SalarySlip />} />

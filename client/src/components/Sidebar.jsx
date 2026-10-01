@@ -16,6 +16,7 @@ const Sidebar = () => {
     { title: 'Dashboard', icon: LayoutDashboard, path: '/' },
     { title: 'Global Settings', icon: Settings, path: '/settings' },
     { title: 'User Detail', icon: User, path: '/user-detail' },
+    { title: 'Employees', icon: User, path: '/employees' },
     { title: 'Attendance', icon: CalendarClock, path: '/attendance' },
     { title: 'Leave Details', icon: FileText, path: '/leave-details' },
     { title: 'Salary Slip', icon: CreditCard, path: '/salary-slip' },
