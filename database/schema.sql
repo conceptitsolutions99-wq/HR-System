@@ -1,39 +1,57 @@
--- HR System Schema
+-- HR System Schema (SQLite)
 
 -- Companies
-CREATE TABLE companies (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255),
-    country VARCHAR(100),
-    state VARCHAR(100),
-    city VARCHAR(100),
-    mobile VARCHAR(20),
-    phone VARCHAR(20),
-    hotline VARCHAR(20),
-    fax VARCHAR(20),
-    website VARCHAR(255),
+CREATE TABLE IF NOT EXISTS companies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT,
+    country TEXT,
+    state TEXT,
+    city TEXT,
+    mobile TEXT,
+    phone TEXT,
+    hotline TEXT,
+    fax TEXT,
+    website TEXT,
     address TEXT,
-    logo_path VARCHAR(255)
+    logo_path TEXT
 );
 
 -- Financial Years
-CREATE TABLE financial_years (
-    id SERIAL PRIMARY KEY,
-    year_name VARCHAR(20) NOT NULL,
-    year_value INT NOT NULL
+CREATE TABLE IF NOT EXISTS financial_years (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    year_name TEXT NOT NULL,
+    year_value INTEGER NOT NULL
 );
 
 -- Employees (Masters)
-CREATE TABLE employees (
-    id SERIAL PRIMARY KEY,
-    emp_id VARCHAR(50) UNIQUE NOT NULL,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
-    email VARCHAR(255) UNIQUE,
-    bank_name VARCHAR(255),
-    branch_name VARCHAR(255),
-    account_holder VARCHAR(255),
-    account_number VARCHAR(50)
-    -- Additional fields based on requirements...
+CREATE TABLE IF NOT EXISTS employees (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    emp_id TEXT UNIQUE NOT NULL,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT UNIQUE,
+    bank_name TEXT,
+    branch_name TEXT,
+    account_holder TEXT,
+    account_number TEXT
+);
+
+-- Attendance
+CREATE TABLE IF NOT EXISTS attendance (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    employee_id INTEGER,
+    status TEXT,
+    date TEXT
+);
+
+-- Leave Applications
+CREATE TABLE IF NOT EXISTS leave_applications (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    employee_id INTEGER,
+    leave_type TEXT,
+    start_date TEXT,
+    end_date TEXT,
+    reason TEXT,
+    status TEXT
 );
