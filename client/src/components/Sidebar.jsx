@@ -13,6 +13,15 @@ import {
 
 const Sidebar = () => {
   const location = useLocation();
+
+  const toggleTheme = (isDark) => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+
   const menuItems = [
     { title: 'Dashboard', icon: LayoutDashboard, path: '/' },
     { title: 'Global Settings', icon: Settings, path: '/settings' },
@@ -45,8 +54,8 @@ const Sidebar = () => {
         ))}
       </nav>
       <div className="absolute bottom-4 left-4">
-        <button className="px-3 py-1 text-sm bg-cyan-400 text-white rounded-full">Light</button>
-        <button className="px-3 py-1 text-sm text-gray-600">Dark</button>
+        <button onClick={() => toggleTheme(false)} className="px-3 py-1 text-sm bg-cyan-400 text-white rounded-full">Light</button>
+        <button onClick={() => toggleTheme(true)} className="px-3 py-1 text-sm text-gray-600">Dark</button>
       </div>
     </div>
   );
