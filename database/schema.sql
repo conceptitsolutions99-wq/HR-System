@@ -55,3 +55,26 @@ CREATE TABLE IF NOT EXISTS leave_applications (
     reason TEXT,
     status TEXT
 );
+
+-- Salary Slips
+CREATE TABLE IF NOT EXISTS salary_slips (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    employee_id INTEGER,
+    month TEXT,
+    year INTEGER,
+    basic_salary REAL,
+    allowances REAL,
+    deductions REAL,
+    net_salary REAL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Device Attendance Logs
+CREATE TABLE IF NOT EXISTS device_attendance_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    employee_id INTEGER,
+    device_id TEXT,
+    timestamp TEXT,
+    status TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);

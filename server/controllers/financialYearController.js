@@ -12,7 +12,7 @@ const getAllFinancialYears = async (req, res) => {
 const createFinancialYear = async (req, res) => {
     const { year_name, year_value } = req.body;
     try {
-        await db.query('INSERT INTO financial_years (year_name, year_value) VALUES ($1, $2)',
+        await db.query('INSERT INTO financial_years (year_name, year_value) VALUES (?, ?)',
             [year_name, year_value]);
         res.status(201).json({ message: 'Financial year created' });
     } catch (err) {

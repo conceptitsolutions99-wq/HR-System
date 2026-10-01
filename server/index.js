@@ -18,22 +18,32 @@ const db = require('./models/db');
 app.use(cors());
 app.use(express.json());
 
-// Initialize database
-const schema = fs.readFileSync(path.resolve(__dirname, '../database/schema.sql'), 'utf-8');
-db.query(schema).then(() => console.log('Database initialized')).catch(err => console.error('DB Init Error', err));
+// Initialize database and start server
+const initializeApp = async () => {
+  try {
+    const schema = fs.readFileSync(path.resolve(__dirname, '../database/schema.sql'), 'utf-8');
+    await db.exec(schema);
+    console.log('Database initialized');
 
-app.use('/api/company', companyRoutes);
-app.use('/api/employees', employeeRoutes);
-app.use('/api/financial-years', financialYearRoutes);
-app.use('/api/attendance', attendanceRoutes);
-app.use('/api/leave', leaveRoutes);
-app.use('/api/salary', salaryRoutes);
-app.use('/api/device-attendance', deviceAttendanceRoutes);
+    app.use('/api/company', companyRoutes);
+    app.use('/api/employees', employeeRoutes);
+    app.use('/api/financial-years', financialYearRoutes);
+    app.use('/api/attendance', attendanceRoutes);
+    app.use('/api/leave', leaveRoutes);
+    app.use('/api/salary', salaryRoutes);
+    app.use('/api/device-attendance', deviceAttendanceRoutes);
 
-app.get('/', (req, res) => {
-  res.send('HR System Backend Running');
-});
+    app.get('/', (req, res) => {
+      res.send('HR System Backend Running');
+    });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Failed to initialize database:', err);
+    process.exit(1);
+  }
+};
+
+initializeApp();

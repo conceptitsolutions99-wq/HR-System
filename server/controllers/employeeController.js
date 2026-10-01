@@ -12,7 +12,7 @@ const getAllEmployees = async (req, res) => {
 const createEmployee = async (req, res) => {
     const { emp_id, first_name, last_name, email } = req.body;
     try {
-        await db.query('INSERT INTO employees (emp_id, first_name, last_name, email) VALUES ($1, $2, $3, $4)',
+        await db.query('INSERT INTO employees (emp_id, first_name, last_name, email) VALUES (?, ?, ?, ?)',
             [emp_id, first_name, last_name, email]);
         res.status(201).json({ message: 'Employee created' });
     } catch (err) {

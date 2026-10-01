@@ -29,4 +29,14 @@ const query = (sql, params = []) => {
   });
 };
 
-module.exports = { query };
+// Helper to execute multiple statements (for schema initialization)
+const exec = (sql) => {
+  return new Promise((resolve, reject) => {
+    db.exec(sql, (err) => {
+      if (err) reject(err);
+      else resolve();
+    });
+  });
+};
+
+module.exports = { query, exec, db };

@@ -13,7 +13,7 @@ const SalarySlip = () => {
   return (
     <div className="p-6 bg-white rounded shadow-md">
       <h2 className="text-xl font-bold mb-6">Salary Slips</h2>
-      <pre>{JSON.stringify(slips, null, 2)}</pre>
+      {slips.length === 0 ? <p className="text-gray-500">No salary slips found.</p> : <pre>{JSON.stringify(slips, null, 2)}</pre>}
     </div>
   );
 };

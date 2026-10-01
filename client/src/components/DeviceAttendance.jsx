@@ -13,7 +13,7 @@ const DeviceAttendance = () => {
   return (
     <div className="p-6 bg-white rounded shadow-md">
       <h2 className="text-xl font-bold mb-6">Device Attendance</h2>
-      <pre>{JSON.stringify(logs, null, 2)}</pre>
+      {logs.length === 0 ? <p className="text-gray-500">No attendance logs found.</p> : <pre>{JSON.stringify(logs, null, 2)}</pre>}
     </div>
   );
 };
