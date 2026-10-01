@@ -19,8 +19,11 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/settings" element={<CompanyInfoForm />} />
           <Route path="/user-detail" element={<UserDetail />} />
+import AddEmployeeForm from './components/AddEmployeeForm';
+// ...
           <Route path="/employees" element={<EmployeeList />} />
-          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/add-employee" element={<AddEmployeeForm />} />
+// ...          <Route path="/attendance" element={<Attendance />} />
           <Route path="/leave-details" element={<LeaveDetails />} />
           <Route path="/salary-slip" element={<SalarySlip />} />
           <Route path="/leave-application" element={<LeaveApplication />} />
