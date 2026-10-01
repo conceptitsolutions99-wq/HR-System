@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const CompanyInfoForm = () => {
   const [formData, setFormData] = useState({
@@ -6,8 +6,26 @@ const CompanyInfoForm = () => {
     mobile: '', phone: '', hotline: '', fax: '', website: '', address: ''
   });
 
+  useEffect(() => {
+    fetch('http://localhost:5000/api/company')
+      .then(res => res.json())
+      .then(data => data && setFormData(data))
+      .catch(err => console.error(err));
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSave = () => {
+    fetch('http://localhost:5000/api/company', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message))
+    .catch(err => console.error(err));
   };
 
   return (
@@ -32,7 +50,7 @@ const CompanyInfoForm = () => {
         </div>
       </div>
       <div className="mt-6">
-        <button className="bg-green-600 text-white px-6 py-2 rounded mr-4">SAVE</button>
+        <button onClick={handleSave} className="bg-green-600 text-white px-6 py-2 rounded mr-4">SAVE</button>
         <button className="bg-orange-500 text-white px-6 py-2 rounded">CANCEL</button>
       </div>
     </div>
