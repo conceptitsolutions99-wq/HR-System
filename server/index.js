@@ -5,11 +5,13 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const companyRoutes = require('./routes/company');
+const employeeRoutes = require('./routes/employee');
 
 app.use(cors());
 app.use(express.json());
 
 app.use('/api/company', companyRoutes);
+app.use('/api/employees', employeeRoutes);
 
 app.get('/', (req, res) => {
   res.send('HR System Backend Running');
