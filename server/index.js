@@ -11,9 +11,16 @@ const attendanceRoutes = require('./routes/attendance');
 const leaveRoutes = require('./routes/leave');
 const salaryRoutes = require('./routes/salary');
 const deviceAttendanceRoutes = require('./routes/deviceAttendance');
+const fs = require('fs');
+const path = require('path');
+const db = require('./models/db');
 
 app.use(cors());
 app.use(express.json());
+
+// Initialize database
+const schema = fs.readFileSync(path.resolve(__dirname, '../database/schema.sql'), 'utf-8');
+db.query(schema).then(() => console.log('Database initialized')).catch(err => console.error('DB Init Error', err));
 
 app.use('/api/company', companyRoutes);
 app.use('/api/employees', employeeRoutes);
