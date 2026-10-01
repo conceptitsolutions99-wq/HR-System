@@ -10,6 +10,7 @@ const financialYearRoutes = require('./routes/financialYear');
 const attendanceRoutes = require('./routes/attendance');
 const leaveRoutes = require('./routes/leave');
 const salaryRoutes = require('./routes/salary');
+const deviceAttendanceRoutes = require('./routes/deviceAttendance');
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use('/api/financial-years', financialYearRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/leave', leaveRoutes);
 app.use('/api/salary', salaryRoutes);
+app.use('/api/device-attendance', deviceAttendanceRoutes);
 
 app.get('/', (req, res) => {
   res.send('HR System Backend Running');
